@@ -4,7 +4,7 @@ const router = express.Router();
 const Articles = require('../models/articles');
 
 
-// @route GET api/articles
+// @route GET /articles
 // @desc GET All articles
 // @access Public
 router.get('/', (req, res) => {
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 
-// @route POST api/articles
+// @route POST /articles
 // @desc Create A article
 // @access Public
 
@@ -35,7 +35,10 @@ router.post('/add', (req, res) => {
 });
 
 
-// Request find by Id
+// @route GET /articles/:id
+// @desc GET an article
+// @access Public
+
 router.get('/:id', (req, res) => {
     Articles.findById(req.params.id)
       .then(article => res.json(article))
@@ -44,7 +47,10 @@ router.get('/:id', (req, res) => {
   
 
 
-// Request find and update by Id
+// @route UPDATE /articles/:id
+// @desc Update an article
+// @access Public
+
 router.put('/update/:id', (req, res) => {
     Articles.findById(req.params.id)
       .then(article => {
@@ -62,8 +68,10 @@ router.put('/update/:id', (req, res) => {
 });
 
 
+// @route DELETE /articles/:id
+// @desc Delete an Article
+// @access Public
 
-// Request find and delete by Id
 router.delete('/:id', (req, res) => {
     Articles.findByIdAndDelete(req.params.id)
       .then(() => res.json('This article has deleted'))
