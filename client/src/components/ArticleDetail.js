@@ -30,12 +30,12 @@ const ArticleDetail = (props) => {
             ) : (
                 <>
                     <img src={`/uploads/${fileName}`} alt="..."
-                    style={{margin:"0 auto", width:"70%", display:"flex", borderRadius:"1rem" }}
+                    style={{margin:"0 auto", width:"70%", display:"flex", borderRadius:"6rem" }}
                     />
 
                     <h2>{title}</h2>
-                    <p>{ingredients}</p>
-                    <span>{recipe}</span>
+                    <p><strong>Ingredints:</strong> {ingredients}</p>
+                    <span><strong>Recipe:</strong> {recipe}</span>
                     <br/>
                     <div >
                     <Link to="/" className="btn btn-primary">Back to Home</Link>

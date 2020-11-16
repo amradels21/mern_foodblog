@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
 // @access Public
 
 router.post('/add', upload.single("articleImage"), (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     const newArticle = new Articles({
         title: req.body.title,
         ingredients: req.body.ingredients,

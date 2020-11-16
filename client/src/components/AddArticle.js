@@ -34,6 +34,9 @@ const AddArticle = () => {
         axios.post('/articles/add', formData)
             .then( res => setMessage(res.data))
             .catch(err => console.log(err));
+
+
+
     }
     return (
         <AddArticleContainer>

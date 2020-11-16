@@ -5,8 +5,8 @@ const Header = () => {
     return (
         <MainContainer>
             <h1>
-                Welcome to the <br/>
-                Food Blog
+                Welcome to<br/>
+                Amrão's Kitchen
             </h1>
         </MainContainer>
     )

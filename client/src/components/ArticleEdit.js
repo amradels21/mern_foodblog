@@ -32,6 +32,8 @@ const ArticleEdit = (props) => {
         axios.put(`/articles/update/${props.match.params.id}`, formData)
             .then( res => setMessage(res.data))
             .catch(err => console.log(err));
+
+
     }
 
     useEffect(() => {

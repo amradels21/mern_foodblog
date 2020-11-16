@@ -9,6 +9,7 @@ import axios from 'axios';
 import AddArticle from './components/AddArticle';
 import ArticleDetail from './components/ArticleDetail';
 import ArticleEdit from './components/ArticleEdit';
+import 'font-awesome/css/font-awesome.min.css';
 
 
 

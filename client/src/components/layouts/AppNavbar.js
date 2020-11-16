@@ -25,17 +25,17 @@ class AppNavbar extends Component {
             <div>
                 <Navbar color="dark" dark expand= "sm" className = "mb-5">
                         <Container>
-                            <NavbarBrand href = "/">Cooking Recipes</NavbarBrand>
+                            <NavbarBrand href = "/">My Cooking Recipes</NavbarBrand>
                             <NavbarToggler onClick={this.toggle}></NavbarToggler>
                             <Collapse isOpen={this.state.isOpen} navbar>
                                 <Nav className= "ml-auto" navbar>
                                     <NavItem>
-                                        <NavLink href="/">
+                                        <NavLink href="/"><span className="fa fa-home fa-lg"/>
                                             Home
                                         </NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink href="/add-article">Add Article</NavLink>
+                                        <NavLink href="/add-article">Add Recipe</NavLink>
                                     </NavItem>
                                 </Nav>
                             </Collapse>
