@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 require('dotenv').config();
 
@@ -28,8 +29,28 @@ connection.once("open", () =>
     console.log("Mongodb connected ..") 
     );
 
+
 // Use Routes
 const articlesRouter = require('./routes/articles');
 app.use('/articles', articlesRouter);
+
+
+
+
+//Static file declaration
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+//production mode
+if(process.env.NODE_ENV === 'production') 
+{  
+    app.use(express.static(path.join(__dirname, 'client/build')));  
+// 
+ app.get('*', (req, res) => {   
+      res.sendFile(path.join(__dirname = 'client/build/index.html')); 
+     })
+}
+//build mode
+app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/client/public/index.html'));})
+
 
 app.listen(port, () => console.log(`Server started at port ${port}`));
