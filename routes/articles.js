@@ -28,7 +28,7 @@ router.post('/add', (req, res) => {
 
     newArticle
     .save()
-    .then(article => res.json(article))
+    .then(article => res.json('Dish posted successfully'))
     .catch(err => res.status(400). json(`Error: ${err}`))
 
 

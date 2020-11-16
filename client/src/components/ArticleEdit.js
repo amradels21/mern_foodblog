@@ -1,13 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
-const AddArticle = () => {
+const ArticleEdit = (props) => {
     const [title, setTitle] = useState("");
     const [ingredients, setIngredients] = useState("");
     const [recipe, setRecipe] = useState("");
     const [message, setMessage] = useState('');
-
 
     const changeOnClick = e => {
         e.preventDefault();
@@ -20,14 +19,25 @@ const AddArticle = () => {
         setIngredients('');
         setRecipe('');
         
-        axios.post('/articles/add', articles)
+        axios.put(`/articles/update/${props.match.params.id}`, articles)
             .then( res => setMessage(res.data))
             .catch(err => console.log(err));
     }
+
+    useEffect(() => {
+        axios.get(`/articles/${props.match.params.id}`)
+        .then(res => [
+            setTitle(res.data.title),
+            setIngredients(res.data.ingredients),
+            setRecipe(res.data.recipe)
+        ])
+        .catch(err => console.log(err));
+    }, [])
+
     return (
-        <AddArticleContainer>
+        <ArticleEditContainer>
             <div className="container">
-                <h1> Add New Dish</h1>
+                <h1> Update Dish</h1>
                 <span className="message">{message}</span>
                 <form onSubmit={changeOnClick} encType="multipart/form-data">
                     <div className="form-group">
@@ -59,17 +69,17 @@ const AddArticle = () => {
                           rows="3"/>
 
                     </div>
-                    <button type="submit" className="btn btn-primary">Post Dish</button>
+                    <button type="submit" className="btn btn-primary">Update</button>
                 </form>
             </div>
 
-        </AddArticleContainer>
+        </ArticleEditContainer>
 
     )
 }
-export default AddArticle;
+export default ArticleEdit;
 
-const AddArticleContainer = styled.div`
+const ArticleEditContainer = styled.div`
     margin: 3rem auto;
     padding: 4rem;
     width: 31.25rem;
