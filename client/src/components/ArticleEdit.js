@@ -7,19 +7,29 @@ const ArticleEdit = (props) => {
     const [ingredients, setIngredients] = useState("");
     const [recipe, setRecipe] = useState("");
     const [message, setMessage] = useState('');
+    const [fileName, setFileName] = useState('');
+
+
+    const onChangeFile = e => {
+        setFileName(e.target.files[0]);
+    }
 
     const changeOnClick = e => {
         e.preventDefault();
-        const articles = {
-            title,
-            ingredients,
-            recipe
-        }
+        
+        const formData = new FormData();
+
+        formData.append("title", title);
+        formData.append("ingredients", ingredients);
+        formData.append("recipe", recipe);
+        formData.append("articleImage", fileName);
+
+
         setTitle('');
         setIngredients('');
         setRecipe('');
         
-        axios.put(`/articles/update/${props.match.params.id}`, articles)
+        axios.put(`/articles/update/${props.match.params.id}`, formData)
             .then( res => setMessage(res.data))
             .catch(err => console.log(err));
     }
@@ -29,7 +39,8 @@ const ArticleEdit = (props) => {
         .then(res => [
             setTitle(res.data.title),
             setIngredients(res.data.ingredients),
-            setRecipe(res.data.recipe)
+            setRecipe(res.data.recipe),
+            setFileName(res.data.articleImage)
         ])
         .catch(err => console.log(err));
     }, [])
@@ -67,6 +78,16 @@ const ArticleEdit = (props) => {
                           onChange={ e => setRecipe(e.target.value)}
                           className="form-control"
                           rows="3"/>
+
+                    </div>
+                    <div className="form-group">
+                        <label className="form-check-label" htmlFor="file">Choose Image</label>
+                        <input
+                          type="file"
+                          fileName="articleImage"
+                          onChange={onChangeFile}
+                          className="form-control-file" 
+                           />
 
                     </div>
                     <button type="submit" className="btn btn-primary">Update</button>

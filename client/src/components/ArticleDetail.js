@@ -2,19 +2,23 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import spinner from "../tenor.gif"
+import spinner from "../tenor.gif";
+
 
 const ArticleDetail = (props) => {
     const [title, setTitle] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [recipe, setRecipe] = useState('');
+    const [fileName, setFileName] = useState('');
+
 
     useEffect(() => {
         axios.get(`/articles/${props.match.params.id}`)
         .then(res => [
             setTitle(res.data.title),
             setIngredients(res.data.ingredients),
-            setRecipe(res.data.recipe)
+            setRecipe(res.data.recipe),
+            setFileName(res.data.articleImage)
         ])
         .catch(err => console.log(err));
     }, [props])
@@ -22,9 +26,13 @@ const ArticleDetail = (props) => {
     return (
         <DetailContainer>
             {!title || !ingredients || !recipe ? (
-                <img src={spinner} alt=".." />
+                <img src={spinner} alt=".." className="spinner" />
             ) : (
                 <>
+                    <img src={`/uploads/${fileName}`} alt="..."
+                    style={{margin:"0 auto", width:"70%", display:"flex", borderRadius:"1rem" }}
+                    />
+
                     <h2>{title}</h2>
                     <p>{ingredients}</p>
                     <span>{recipe}</span>
@@ -50,7 +58,7 @@ const DetailContainer = styled.div`
         font-weight: 900;
         color: var(--dark-green);
     }
-    img {
+    .spinner {
         display: block;
         margin: 0 auto;
         height: 2rem;

@@ -14,6 +14,14 @@ const articleSchema = new Schema({
     recipe: {
         type: String,
         required: true
+    },
+    articleImage:{
+        type: String,
+        required: true
+    },
+    postDate: {
+        type: Date,
+        default: Date.now
     }
 
 });

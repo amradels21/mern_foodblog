@@ -18,6 +18,7 @@ const Articles = ({ posts }) => {
             {posts && posts.map((article, key) => (
 
                     <div className="container" key={key}>
+                        <img src={`/uploads/${article.articleImage}`} alt="..." style={{width:"40%"}} />
                         <Link to={{
                             pathname: `/article/${article._id}`
                         }}>

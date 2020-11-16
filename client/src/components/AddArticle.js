@@ -7,20 +7,31 @@ const AddArticle = () => {
     const [ingredients, setIngredients] = useState("");
     const [recipe, setRecipe] = useState("");
     const [message, setMessage] = useState('');
+    const [fileName, setFileName] = useState('');
+
+    const onChangeFile = e => {
+        setFileName(e.target.files[0]);
+    }
 
 
     const changeOnClick = e => {
         e.preventDefault();
-        const articles = {
-            title,
-            ingredients,
-            recipe
-        }
+
+        const formData = new FormData();
+
+        formData.append("title", title);
+        formData.append("ingredients", ingredients);
+        formData.append("recipe", recipe);
+        formData.append("articleImage", fileName);
+
+
+
+
         setTitle('');
         setIngredients('');
         setRecipe('');
         
-        axios.post('/articles/add', articles)
+        axios.post('/articles/add', formData)
             .then( res => setMessage(res.data))
             .catch(err => console.log(err));
     }
@@ -59,6 +70,17 @@ const AddArticle = () => {
                           rows="3"/>
 
                     </div>
+                    <div className="form-group">
+                        <label className="form-check-label" htmlFor="file">Choose Image</label>
+                        <input
+                          type="file"
+                          fileName="articleImage"
+                          onChange={onChangeFile}
+                          className="form-control-file" 
+                           />
+
+                    </div>
+
                     <button type="submit" className="btn btn-primary">Post Dish</button>
                 </form>
             </div>
