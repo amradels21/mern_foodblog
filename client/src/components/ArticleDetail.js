@@ -34,7 +34,7 @@ const ArticleDetail = (props) => {
                     />
 
                     <h2>{title}</h2>
-                    <p><strong>Ingredints:</strong> {ingredients}</p>
+                    <p><strong>Ingredients:</strong> {ingredients}</p>
                     <span><strong>Recipe:</strong> {recipe}</span>
                     <br/>
                     <div >

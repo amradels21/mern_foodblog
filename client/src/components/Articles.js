@@ -42,10 +42,10 @@ const Articles = ({ posts }) => {
 
                                 <div className="row">
                                     <div className="col-sm-7" style={{margin:"0.1rem", padding:"0rem 2rem 1rem"}}>
-                                        <Link to={`/update/${article._id}`} className="btn btn-outline-success"><span className="fa fa-pencil fa-lg"></span> Edit Article</Link>
+                                        <Link to={`/update/${article._id}`} className="btn btn-outline-success"><span className="fa fa-pencil fa-lg"></span> Edit</Link>
                                     </div>
                                     <div className="col-sm-7" style={{margin:"0.1rem" , padding:"0rem 2rem 1rem"}}>
-                                        <button onClick={() => deleteDish(article._id)} className="btn btn-outline-danger"><span className="fa fa-trash fa-lg"></span> Delete Article</button>
+                                        <button onClick={() => deleteDish(article._id)} className="btn btn-outline-danger"><span className="fa fa-trash fa-lg"></span> Delete</button>
                                     </div>
                                 </div>
                         </Card>
