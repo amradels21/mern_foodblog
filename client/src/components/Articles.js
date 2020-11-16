@@ -2,9 +2,15 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Card, CardImg, CardTitle,CardBody, Button, Container } from 'reactstrap';
+import { Card, CardImg, CardTitle,CardBody, Container } from 'reactstrap';
 import "./Box.css";
-import spinner from "../tenor.gif";
+
+import { getArticles } from '../actions/articleActions';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';    
+
+
+
 
 
 const Articles = ({ posts }) => {
@@ -56,7 +62,16 @@ const Articles = ({ posts }) => {
     )
 }
 
-export default Articles;
+Articles.propTypes = {
+    getArticles: PropTypes.func.isRequired,
+    article: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+    article: state.article
+});
+
+export default connect(mapStateToProps,{getArticles})(Articles);
 
 const MainContainer = styled.div`
     margin: 7rem 0;
