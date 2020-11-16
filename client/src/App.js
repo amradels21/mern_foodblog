@@ -6,13 +6,14 @@ import AppNavbar from './components/layouts/AppNavbar';
 import Articles from './components/Articles';
 import {Route, Switch} from 'react-router-dom';
 import axios from 'axios';
+import AddArticle from './components/AddArticle';
 
 
 
 function App() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    axios.get('http://localhost:8080/articles')
+    axios.get('/articles')
     .then(res => setPosts(res.data))
     .catch(err => console.log(err));
   }); 
@@ -20,7 +21,9 @@ function App() {
     <div className="App">
       <Header />
       <AppNavbar />
-      <Route to="/" render={() => <Articles posts={posts} />} />
+      <Route exact path="/" render={() => <Articles posts={posts} />} />
+      <Route path="/add-article" component={AddArticle} />
+
     </div>
   );
 }
