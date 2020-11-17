@@ -49,7 +49,7 @@ const ArticleEdit = (props) => {
 
     return (
         <ArticleEditContainer>
-            <div className="container">
+            <div className="container ml-0">
                 <h1> Update Dish</h1>
                 <span className="message">{message}</span>
                 <form onSubmit={changeOnClick} encType="multipart/form-data">

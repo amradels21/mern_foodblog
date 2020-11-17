@@ -15,6 +15,7 @@ export default function(state = initialState, action){
 
             };
         case DELETE_ARTICLE:
+            console.log('Reducer');
             return{
                 ...state,
                 articles: state.articles.filter(article => article._id !== action.payload)

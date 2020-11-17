@@ -1,13 +1,19 @@
+import { disconnect } from 'mongoose';
 import React from 'react';
+import { Container } from 'reactstrap';
 import styled from 'styled-components';
 
 const Header = () => {
     return (
         <MainContainer>
+            <Container>
+
+            
             <h1>
                 Welcome to<br/>
                 Amrão's Kitchen
             </h1>
+            </Container>
         </MainContainer>
     )
 }

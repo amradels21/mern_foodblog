@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Card, CardImg, CardTitle,CardBody, Container } from 'reactstrap';
+import { Card, CardImg, CardTitle,CardBody, Container, Button, ButtonGroup } from 'reactstrap';
 import "./Box.css";
 
 import { getArticles } from '../actions/articleActions';
@@ -41,12 +41,16 @@ const Articles = ({ posts }) => {
                             </Link>
 
                                 <div className="row">
-                                    <div className="col-sm-7" style={{margin:"0.1rem", padding:"0rem 2rem 1rem"}}>
-                                        <Link to={`/update/${article._id}`} className="btn btn-outline-success"><span className="fa fa-pencil fa-lg"></span> Edit</Link>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <div className="col-sm-7" style={{margin:"0.1rem", padding:"0rem 2rem 1rem"}}>
+                                                <Link to={`/update/${article._id}`} className="btn btn-outline-success"><span className="fa fa-pencil fa-lg"></span> Edit</Link>
+                                        </div>
+                                        <div className="col-sm-7" style={{margin:"0.1rem" , padding:"0rem 1rem 1rem 5rem", marginRight:"2rem"}}>
+                                                <button onClick={() => deleteDish(article._id)} className="btn btn-outline-danger"><span className="fa fa-trash fa-lg"></span> Delete</button>
+                                        </div>
+                                        
                                     </div>
-                                    <div className="col-sm-7" style={{margin:"0.1rem" , padding:"0rem 2rem 1rem"}}>
-                                        <button onClick={() => deleteDish(article._id)} className="btn btn-outline-danger"><span className="fa fa-trash fa-lg"></span> Delete</button>
-                                    </div>
+                                    
                                 </div>
                         </Card>
                         

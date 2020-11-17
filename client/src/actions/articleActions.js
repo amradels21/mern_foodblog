@@ -13,3 +13,15 @@ export const getArticles = () => dispatch => {
        
       
   }
+
+export const deleteArticle = id => (dispatch, getState) => {
+    console.log('Action');
+
+    axios
+    .delete(`/articles/${id}`)
+    .then(res => dispatch({
+        type: DELETE_ARTICLE,
+        payload: id
+    }))
+    .catch(err => console.log(err));
+ }

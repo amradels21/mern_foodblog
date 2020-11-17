@@ -24,7 +24,7 @@ class AppNavbar extends Component {
         return (
             <div>
                 <Navbar color="dark" dark expand= "sm" className = "mb-5">
-                        <Container>
+                        <Container fluid>
                             <NavbarBrand href = "/">My Cooking Recipes</NavbarBrand>
                             <NavbarToggler onClick={this.toggle}></NavbarToggler>
                             <Collapse isOpen={this.state.isOpen} navbar>

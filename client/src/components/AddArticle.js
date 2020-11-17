@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { Container } from 'reactstrap';
 
 const AddArticle = () => {
     const [title, setTitle] = useState("");
@@ -40,7 +41,10 @@ const AddArticle = () => {
     }
     return (
         <AddArticleContainer>
-            <div className="container">
+         
+
+            
+            <div className="container col-sm-10 ml-0">
                 <h1> Add New Dish</h1>
                 <span className="message">{message}</span>
                 <form onSubmit={changeOnClick} encType="multipart/form-data">
@@ -87,7 +91,7 @@ const AddArticle = () => {
                     <button type="submit" className="btn btn-primary">Post Dish</button>
                 </form>
             </div>
-
+            
         </AddArticleContainer>
 
     )
